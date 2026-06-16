@@ -3,7 +3,7 @@
 Module for basic async syntax
 """
 import asyncio
-from typing import list
+from typing import List
 
 wait_random = __import__('0-basic_async_syntax').wait_random
 
