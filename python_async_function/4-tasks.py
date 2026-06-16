@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Ce module permet d'exécuter plusieurs objets asyncio.Task en même temps.
-Il réutilise la brique de création de tâche synchrone pour gérer la concurrence.
+brique de création de tâche synchrone pour gérer la concurrence.
 """
 import asyncio
 from typing import List
@@ -15,9 +15,8 @@ async def task_wait_n(n: int, max_delay: int) -> List[float]:
     la liste des délais générés, triée de manière croissante grâce
     au cycle de complétion asynchrone.
     """
-    delays: List[float] = []
     tasks = [task_wait_random(max_delay) for _ in range(n)]
-
+    delays: List[float] = []
     for task in asyncio.as_completed(tasks):
         delay = await task
         delays.append(delay)
